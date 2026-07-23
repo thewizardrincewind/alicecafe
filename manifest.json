@@ -3,8 +3,11 @@
   "short_name": "AliceCafe",
   "start_url": "/alicecafe/",
   "scope": "/alicecafe/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#2c1810",
   "theme_color": "#2c1810",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/alicecafe/icons/icon-32.png",

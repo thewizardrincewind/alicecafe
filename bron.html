@@ -157,6 +157,56 @@
             margin-bottom: 5%;
         }
 
+        .notification-block {
+            text-align: center;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(3px);
+        }
+
+        .notification-block .btn-subscribe {
+            background: rgb(111, 170, 176);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-family: 'Neucha', cursive;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .notification-block .btn-subscribe:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+
+        .notification-block .btn-test {
+            background: #2c1810;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-family: 'Neucha', cursive;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 10px;
+        }
+
+        .notification-block .btn-test:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+
+        .notification-block .status-text {
+            color: aliceblue;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 3%;
@@ -178,6 +228,17 @@
             .pricing {
                 width: 95%;
                 padding: 20px;
+            }
+
+            .notification-block .btn-subscribe,
+            .notification-block .btn-test {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .notification-block .btn-test {
+                margin-left: 0;
             }
         }
 
@@ -206,6 +267,17 @@
 
             .cute-image {
                 width: 95%;
+            }
+
+            .notification-block {
+                padding: 15px;
+                margin: 20px 0;
+            }
+
+            .notification-block .btn-subscribe,
+            .notification-block .btn-test {
+                padding: 12px 20px;
+                font-size: 16px;
             }
         }
     </style>
@@ -253,36 +325,15 @@
 
 <hr>
 
-<!-- Блок с кнопками уведомлений -->
-<div style="text-align: center; margin: 20px 0;">
-  <button id="subscribeBtn" style="
-    background: rgb(111, 170, 176);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    border-radius: 10px;
-    font-size: 20px;
-    font-family: 'Neucha', cursive;
-    cursor: pointer;
-    transition: all 0.3s;
-  ">
+<!-- БЛОК КНОПОК УВЕДОМЛЕНИЙ -->
+<div class="notification-block">
+  <button id="subscribeBtn" class="btn-subscribe">
     🔔 Включить уведомления
   </button>
-  <button id="testNotificationBtn" style="
-    background: #2c1810;
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    border-radius: 10px;
-    font-size: 20px;
-    font-family: 'Neucha', cursive;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-left: 10px;
-  ">
+  <button id="testNotificationBtn" class="btn-test">
     📨 Тестовое уведомление
   </button>
-  <p id="subscriptionStatus" style="color: aliceblue; margin-top: 10px;"></p>
+  <p id="subscriptionStatus" class="status-text"></p>
 </div>
 
 <img src="images/cute.png" alt="Cute image" class="cute-image">
@@ -290,7 +341,7 @@
 </div>
 
 <script>
-  // Конфигурация
+  // КОНФИГУРАЦИЯ
   const VAPID_PUBLIC_KEY = 'ВАШ_ПУБЛИЧНЫЙ_VAPID_КЛЮЧ';
   const SERVER_URL = 'http://localhost:4000';
 
@@ -301,23 +352,27 @@
   const testBtn = document.getElementById('testNotificationBtn');
   const statusEl = document.getElementById('subscriptionStatus');
 
+  // Проверка поддержки
   if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
     statusEl.textContent = '❌ Ваш браузер не поддерживает push-уведомления';
-    subscribeBtn.disabled = true;
-    testBtn.disabled = true;
+    if (subscribeBtn) subscribeBtn.disabled = true;
+    if (testBtn) testBtn.disabled = true;
   }
 
+  // Инициализация
   async function initialize() {
     try {
       swRegistration = await navigator.serviceWorker.ready;
       const subscription = await swRegistration.pushManager.getSubscription();
       isSubscribed = !!subscription;
       updateUI();
+      console.log('✅ Push инициализирован');
     } catch (error) {
       console.error('Ошибка инициализации:', error);
     }
   }
 
+  // Подписка
   async function subscribe() {
     try {
       const permission = await Notification.requestPermission();
@@ -348,6 +403,7 @@
     }
   }
 
+  // Отписка
   async function unsubscribe() {
     try {
       const subscription = await swRegistration.pushManager.getSubscription();
@@ -367,6 +423,7 @@
     }
   }
 
+  // Тестовое уведомление
   async function sendTestNotification() {
     try {
       const response = await fetch(`${SERVER_URL}/api/send-notification`, {
@@ -387,6 +444,7 @@
     }
   }
 
+  // Обновление UI
   function updateUI() {
     if (isSubscribed) {
       subscribeBtn.textContent = '🔕 Отключить уведомления';
@@ -397,20 +455,27 @@
     }
   }
 
-  subscribeBtn.addEventListener('click', () => {
-    if (isSubscribed) {
-      unsubscribe();
-    } else {
-      subscribe();
-    }
-  });
+  // Обработчики
+  if (subscribeBtn) {
+    subscribeBtn.addEventListener('click', () => {
+      if (isSubscribed) {
+        unsubscribe();
+      } else {
+        subscribe();
+      }
+    });
+  }
 
-  testBtn.addEventListener('click', sendTestNotification);
+  if (testBtn) {
+    testBtn.addEventListener('click', sendTestNotification);
+  }
 
+  // Запуск
   window.addEventListener('load', initialize);
 </script>
 
 <script>
+  // Регистрация Service Worker
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/alicecafe/sw.js')

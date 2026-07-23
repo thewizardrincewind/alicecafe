@@ -5,7 +5,7 @@
   "scope": "/alicecafe/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
-  "background_color": "#2c1810",
+  "background_color": "#ffffff",
   "theme_color": "#2c1810",
   "orientation": "portrait-primary",
   "icons": [

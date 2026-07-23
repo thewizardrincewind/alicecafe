@@ -253,9 +253,162 @@
 
 <hr>
 
+<!-- Блок с кнопками уведомлений -->
+<div style="text-align: center; margin: 20px 0;">
+  <button id="subscribeBtn" style="
+    background: rgb(111, 170, 176);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Neucha', cursive;
+    cursor: pointer;
+    transition: all 0.3s;
+  ">
+    🔔 Включить уведомления
+  </button>
+  <button id="testNotificationBtn" style="
+    background: #2c1810;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Neucha', cursive;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 10px;
+  ">
+    📨 Тестовое уведомление
+  </button>
+  <p id="subscriptionStatus" style="color: aliceblue; margin-top: 10px;"></p>
+</div>
+
 <img src="images/cute.png" alt="Cute image" class="cute-image">
 
 </div>
+
+<script>
+  // Конфигурация
+  const VAPID_PUBLIC_KEY = 'ВАШ_ПУБЛИЧНЫЙ_VAPID_КЛЮЧ';
+  const SERVER_URL = 'http://localhost:4000';
+
+  let isSubscribed = false;
+  let swRegistration = null;
+
+  const subscribeBtn = document.getElementById('subscribeBtn');
+  const testBtn = document.getElementById('testNotificationBtn');
+  const statusEl = document.getElementById('subscriptionStatus');
+
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+    statusEl.textContent = '❌ Ваш браузер не поддерживает push-уведомления';
+    subscribeBtn.disabled = true;
+    testBtn.disabled = true;
+  }
+
+  async function initialize() {
+    try {
+      swRegistration = await navigator.serviceWorker.ready;
+      const subscription = await swRegistration.pushManager.getSubscription();
+      isSubscribed = !!subscription;
+      updateUI();
+    } catch (error) {
+      console.error('Ошибка инициализации:', error);
+    }
+  }
+
+  async function subscribe() {
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        statusEl.textContent = '❌ Разрешение на уведомления не получено';
+        return;
+      }
+
+      const subscription = await swRegistration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: VAPID_PUBLIC_KEY
+      });
+
+      const response = await fetch(`${SERVER_URL}/api/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(subscription)
+      });
+
+      if (response.ok) {
+        isSubscribed = true;
+        statusEl.textContent = '✅ Вы подписаны на уведомления!';
+        updateUI();
+      }
+    } catch (error) {
+      console.error('Ошибка подписки:', error);
+      statusEl.textContent = '❌ Ошибка подписки: ' + error.message;
+    }
+  }
+
+  async function unsubscribe() {
+    try {
+      const subscription = await swRegistration.pushManager.getSubscription();
+      if (subscription) {
+        await subscription.unsubscribe();
+        await fetch(`${SERVER_URL}/api/unsubscribe`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ endpoint: subscription.endpoint })
+        });
+        isSubscribed = false;
+        statusEl.textContent = '🔕 Уведомления отключены';
+        updateUI();
+      }
+    } catch (error) {
+      console.error('Ошибка отписки:', error);
+    }
+  }
+
+  async function sendTestNotification() {
+    try {
+      const response = await fetch(`${SERVER_URL}/api/send-notification`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: 'Привет из AliceCafe! 🐰',
+          body: 'Сегодня у нас чай с печеньками и новые кролики!',
+          url: '/alicecafe/'
+        })
+      });
+      
+      const result = await response.json();
+      statusEl.textContent = `✅ ${result.message}`;
+    } catch (error) {
+      console.error('Ошибка отправки:', error);
+      statusEl.textContent = '❌ Ошибка отправки: ' + error.message;
+    }
+  }
+
+  function updateUI() {
+    if (isSubscribed) {
+      subscribeBtn.textContent = '🔕 Отключить уведомления';
+      subscribeBtn.style.background = '#c0392b';
+    } else {
+      subscribeBtn.textContent = '🔔 Включить уведомления';
+      subscribeBtn.style.background = 'rgb(111, 170, 176)';
+    }
+  }
+
+  subscribeBtn.addEventListener('click', () => {
+    if (isSubscribed) {
+      unsubscribe();
+    } else {
+      subscribe();
+    }
+  });
+
+  testBtn.addEventListener('click', sendTestNotification);
+
+  window.addEventListener('load', initialize);
+</script>
 
 <script>
   if ('serviceWorker' in navigator) {

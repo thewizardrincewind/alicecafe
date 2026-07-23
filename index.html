@@ -300,6 +300,17 @@
 
 </div>
 
+<!-- Кнопка для подписки на уведомления -->
+<div style="text-align: center; margin: 20px 0;">
+  <button id="subscribeBtn"">
+    🔔 Включить уведомления
+  </button>
+  <button id="testNotificationBtn">
+    📨 Тестовое уведомление    <-- ЭТО КНОПКА ДЛЯ ОТПРАВКИ
+  </button>
+  <p id="subscriptionStatus" style="color: aliceblue; margin-top: 10px;"></p>
+</div>
+
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

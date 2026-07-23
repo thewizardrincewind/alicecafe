@@ -1,16 +1,12 @@
 {
-  "name": "Alice Cafe - антикафе",
+  "name": "AliceCafe",
   "short_name": "AliceCafe",
   "start_url": "/",
   "background_color": "#ffffff",
   "theme_color": "#000000",
-  "direction": "right",
-  "orientation": "any",
-  "related application": "false",
-  "language": "ru",
   "icons": [
     {
-      "src": "/icon.png",
+      "src": "/icons/icon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     }

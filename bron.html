@@ -24,6 +24,7 @@
         body {
             background: #2c1810;
             min-height: 100vh;
+            font-family: 'Neucha', cursive;
         }
 
         .container {
@@ -37,6 +38,7 @@
             flex-direction: column;
             align-items: center;
             padding: 20px 0;
+            width: 100%;
         }
 
         nav {
@@ -56,29 +58,47 @@
             text-decoration: none;
             font-size: clamp(16px, 3vw, 24px);
             padding: 5px 10px;
+            transition: opacity 0.3s;
         }
 
-        header a {
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        header > a {
             color: aliceblue;
             text-decoration: none;
+            font-size: clamp(30px, 6vw, 60px);
+            line-height: 1;
         }
 
         .namemain {
-            font-family: 'Henny Penny';
+            font-family: 'Henny Penny', cursive;
             color: aliceblue;
             font-size: clamp(40px, 8vw, 80px);
-            margin-top: 2%;
+            margin: 2% 0;
             text-align: center;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+
+        .header-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(10px, 3vw, 30px);
+            width: 100%;
+            flex-wrap: wrap;
         }
 
         .rules {
-            font-family: 'Neucha';
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            margin: 20px auto;
             width: 90%;
             max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
         }
 
         .rules h2 {
@@ -100,17 +120,16 @@
         }
 
         hr {
-            color: rgb(111, 170, 176);
+            border: 1px solid rgb(111, 170, 176);
             width: 70%;
             margin: 30px auto;
-            border: 1px solid rgb(111, 170, 176);
         }
 
         .pricing {
-            font-family: 'Neucha';
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
             width: 90%;
             max-width: 600px;
             margin: 20px auto;
@@ -139,13 +158,17 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 3%;
+            }
+
             nav div {
                 gap: 10px;
             }
 
             .rules {
                 width: 95%;
-                padding: 15px;
+                padding: 20px;
             }
 
             .rules ul {
@@ -154,18 +177,18 @@
 
             .pricing {
                 width: 95%;
-                padding: 15px;
+                padding: 20px;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 3%;
+                padding: 0 2%;
             }
 
             .rules {
                 width: 98%;
-                padding: 12px;
+                padding: 15px;
             }
 
             .rules ul {
@@ -178,7 +201,7 @@
 
             .pricing {
                 width: 98%;
-                padding: 12px;
+                padding: 15px;
             }
 
             .cute-image {
@@ -200,9 +223,12 @@
     <a href="feedback.php">Отзывы</a>
     </div>
   </nav>
-  <a style="font-size: clamp(30px, 6vw, 60px); color: aliceblue;">&#10039</a>
-  <a class="namemain">AliceCafe</a>
-  <a style="font-size: clamp(30px, 6vw, 60px); color: aliceblue;">&#10039</a>
+  
+  <div class="header-decoration">
+    <a>&#10039</a>
+    <a class="namemain">AliceCafe</a>
+    <a>&#10039</a>
+  </div>
 </header>
     
 <div class="rules">
@@ -216,7 +242,9 @@
         <li>Не оставляйте после себя беспорядок. Мусор и разгром обойдется вам штрафом в 5000 рублей.</li>
     </ul>
 </div>
+
 <hr>
+
 <div class="pricing">
     <h2>Прайс-лист</h2>
     <p>Первый час - 600 рублей</p>
@@ -225,7 +253,9 @@
     <p>В день рождения: скидка 20% за общий счёт имениннику и его друзьям</p>
     <p>Студентам: скидка 10%</p>
 </div>
+
 <hr>
+
 <img src="images/cute.png" alt="Cute image" class="cute-image">
 
 </div>

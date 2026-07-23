@@ -27,7 +27,7 @@ const FILES = [
 ];
 
 
-const CACHE_NAME = 'pwa-v1';
+const CACHE_NAME = 'pwa-v2';
 const FILES = ['/', '/main.html', '/manifest.json'];
 
 self.addEventListener('install', e => {

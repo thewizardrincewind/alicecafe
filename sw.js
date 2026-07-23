@@ -1,7 +1,7 @@
 // sw.js
 
 // Название кеша (меняйте при обновлении)
-const CACHE_NAME = 'alicecafe-v4';
+const CACHE_NAME = 'alicecafe-v5';
 
 const FILES = [
   '/alicecafe/',

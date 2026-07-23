@@ -6,7 +6,6 @@ const CACHE_NAME = 'alicecafe-v4';
 const FILES = [
   '/alicecafe/',
   '/alicecafe/index.html',
-  '/alicecafe/main.html',
   '/alicecafe/contacts.html',
   '/alicecafe/bron.html',
   '/alicecafe/feedback.php',

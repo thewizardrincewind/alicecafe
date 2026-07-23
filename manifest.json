@@ -3,7 +3,6 @@
   "short_name": "AliceCafe",
   "start_url": "/alicecafe/",
   "scope": "/alicecafe/",
-  "display": "standalone",
   "background_color": "#2c1810",
   "theme_color": "#2c1810",
   "icons": [

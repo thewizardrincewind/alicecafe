@@ -15,59 +15,241 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #2c1810;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        nav {
+            width: 100%;
+            margin-bottom: 2%;
+        }
+
+        nav div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: aliceblue;
+            text-decoration: none;
+            font-size: clamp(16px, 3vw, 24px);
+            padding: 5px 10px;
+        }
+
+        header a {
+            color: aliceblue;
+            text-decoration: none;
+        }
+
+        .namemain {
+            font-family: 'Henny Penny';
+            color: aliceblue;
+            font-size: clamp(40px, 8vw, 80px);
+            margin-top: 2%;
+            text-align: center;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            font-family: 'Neucha';
+            font-size: clamp(16px, 2.5vw, 25px);
+        }
+
+        .flex-container p {
+            flex: 1;
+            min-width: 250px;
+            margin: 5%;
+        }
+
+        .flex-container img {
+            flex: 0 0 auto;
+            max-width: 100%;
+            height: auto;
+            width: clamp(150px, 25vw, 300px);
+            margin-right: 5%;
+        }
+
+        hr {
+            color: rgb(111, 170, 176);
+            width: 70%;
+            margin: 30px auto;
+            border: 1px solid rgb(111, 170, 176);
+        }
+
+        .schedule {
+            text-align: center;
+            font-family: 'Neucha';
+            padding: 10px 0;
+        }
+
+        .schedule h2 {
+            font-size: clamp(20px, 3vw, 30px);
+            margin-bottom: 10px;
+        }
+
+        .schedule p {
+            font-size: clamp(16px, 2vw, 22px);
+            margin: 5px 0;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-family: 'Neucha';
+            font-size: clamp(24px, 4vw, 40px);
+            margin: 20px 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 10px 0;
+            justify-items: center;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .cute-image {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            margin-bottom: 5%;
+        }
+
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .flex-container p {
+                margin: 3% 0;
+            }
+
+            .flex-container img {
+                margin: 0 auto;
+            }
+
+            nav div {
+                gap: 10px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 3%;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 8px;
+            }
+
+            .gallery img {
+                max-width: 150px;
+            }
+
+            .cute-image {
+                width: 95%;
+            }
+        }
+    </style>
+
 </head>
 <body>
 
 
 <div class="container">
 <header>
-  <nav style="margin-bottom: 2%;">
+  <nav>
     <div>
-    <a href="main.html", style="color: aliceblue;">Главная</a>
-    <a href="contacts.html", style="color: aliceblue;">Контакты</a>
-    <a href="bron.html", style="color: aliceblue;">Цены</a>
-    <a href="feedback.php", style="color: aliceblue;">Отзывы</a>
+    <a href="main.html">Главная</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="bron.html">Цены</a>
+    <a href="feedback.php">Отзывы</a>
     </div>
   </nav>
-  <a style="font-size: 50px; color: aliceblue;">&#10039</a>
-  <a class="namemain", style="font-family: 'Henny Penny'; color: aliceblue; font-size: 60px;margin-top: 2%;">AliceCafe</a1>
-  <a style="font-size: 50px; color: aliceblue;">&#10039</a>
+  <a style="font-size: clamp(30px, 6vw, 60px); color: aliceblue;">&#10039</a>
+  <a class="namemain">AliceCafe</a>
+  <a style="font-size: clamp(30px, 6vw, 60px); color: aliceblue;">&#10039</a>
 </header>
 
 
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 20px;font-family: 'Neucha'; font-size: 25px;">
-  <p style="margin: 7%;">Добро пожаловать в анти-кафе AliceCafe! Наше кафе известно в Москве недорогим, качественным сервисом! Проведите час (или целый день) в компании ручных кроликов. 
+<div class="flex-container">
+  <p>Добро пожаловать в анти-кафе AliceCafe! Наше кафе известно в Москве недорогим, качественным сервисом! Проведите час (или целый день) в компании ручных кроликов. 
         Пейте чай, отдыхайте, заряжайтесь теплом. Играйте в настолки, работайте или просто лежите на диване. С нас чай, кофе и печенье. Два раза в неделю мы проводим мастер-классы или смотрим кино.</p>
-  <img src="images/bunny.jpg" alt="Рисунок кролика" style="max-width: 200px; margin-right: 7%;">
+  <img src="images/bunny.jpg" alt="Рисунок кролика">
 </div>
 
-<hr style="color: rgb(111, 170, 176); width: 70%;">
+<hr>
 
-<div style="text-align: center; border-width: medium; border-color: rgb(111, 170, 176); font-family: 'Neucha'">
-  <h2 style="font-size: 25px;">Время работы:</h2>
-  <p style="font-size: 20px;">Понедельник-пятница: 10:00-20:00</p>
-  <p style="font-size: 20px;">Суббота: 11:00-18:00</p>
-  <p style="font-size: 20px;">Воскресенье: выходной</p>
+<div class="schedule">
+  <h2>Время работы:</h2>
+  <p>Понедельник-пятница: 10:00-20:00</p>
+  <p>Суббота: 11:00-18:00</p>
+  <p>Воскресенье: выходной</p>
 </div>
 
-<hr style="color: rgb(111, 170, 176); width: 70%;">
+<hr>
 
-<h1 style="text-align: center; font-family: 'Neucha';">Наши пушистые сотрудники:</h1>
+<h1 class="gallery-title">Наши пушистые сотрудники:</h1>
 
-<p style="align-items: center;gap: 20px; margin-top: 20px; margin-left: 8%;">
-    <img src="images/bun2.jpg" alt="Фотография 1" width="250" height="250">
-    <img src="images/bun3.jpg" alt="Фотография 2" width="250" height="250">
-    <img src="images/bun4.jpg" alt="Фотография 3" width="250" height="250">
-    <img src="images/bun5.jpg" alt="Фотография 4" width="250" height="250">
-    <img src="images/bun6.jpg" alt="Фотография 4" width="250" height="250">
-    <img src="images/bun7.jpg" alt="Фотография 4" width="250" height="250">
-    <img src="images/bun5.jpg" alt="Фотография 4" width="250" height="250">
-    <img src="images/bun9.jpg" alt="Фотография 4" width="250" height="250">
-    <img src="images/bun10.jpg" alt="Фотография 4" width="250" height="250">
-  </p>
+<div class="gallery">
+    <img src="images/bun2.jpg" alt="Фотография 1">
+    <img src="images/bun3.jpg" alt="Фотография 2">
+    <img src="images/bun4.jpg" alt="Фотография 3">
+    <img src="images/bun5.jpg" alt="Фотография 4">
+    <img src="images/bun6.jpg" alt="Фотография 5">
+    <img src="images/bun7.jpg" alt="Фотография 6">
+    <img src="images/bun5.jpg" alt="Фотография 7">
+    <img src="images/bun9.jpg" alt="Фотография 8">
+    <img src="images/bun10.jpg" alt="Фотография 9">
+</div>
 
-<hr style="color: rgb(111, 170, 176); width: 70%;">
-<img src="images/cute.png" style="width: 50%; height: 20%; justify-content: center; margin-left: 25% ; margin-bottom: 5%;">
+<hr>
+<img src="images/cute.png" alt="Cute image" class="cute-image">
 
 </div>
 

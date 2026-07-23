@@ -13,38 +13,211 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #2c1810;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        nav {
+            width: 100%;
+            margin-bottom: 2%;
+        }
+
+        nav div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: aliceblue;
+            text-decoration: none;
+            font-size: clamp(16px, 3vw, 24px);
+            padding: 5px 10px;
+        }
+
+        header a {
+            color: aliceblue;
+            text-decoration: none;
+        }
+
+        .namemain {
+            font-family: 'Henny Penny';
+            color: aliceblue;
+            font-size: clamp(40px, 8vw, 80px);
+            margin-top: 2%;
+            text-align: center;
+        }
+
+        .rules {
+            font-family: 'Neucha';
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .rules h2 {
+            font-size: clamp(22px, 3vw, 30px);
+            text-align: center;
+            margin-bottom: 15px;
+            color: #2c1810;
+        }
+
+        .rules ul {
+            font-size: clamp(16px, 1.8vw, 20px);
+            padding-left: 20px;
+            color: #2c1810;
+        }
+
+        .rules ul li {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        hr {
+            color: rgb(111, 170, 176);
+            width: 70%;
+            margin: 30px auto;
+            border: 1px solid rgb(111, 170, 176);
+        }
+
+        .pricing {
+            font-family: 'Neucha';
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: clamp(22px, 3vw, 30px);
+            color: #2c1810;
+            margin-bottom: 15px;
+        }
+
+        .pricing p {
+            font-size: clamp(18px, 2vw, 22px);
+            margin: 10px 0;
+            color: #2c1810;
+        }
+
+        .cute-image {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            margin-bottom: 5%;
+        }
+
+        @media (max-width: 768px) {
+            nav div {
+                gap: 10px;
+            }
+
+            .rules {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .rules ul {
+                padding-left: 15px;
+            }
+
+            .pricing {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 3%;
+            }
+
+            .rules {
+                width: 98%;
+                padding: 12px;
+            }
+
+            .rules ul {
+                padding-left: 12px;
+            }
+
+            .rules ul li {
+                margin-bottom: 8px;
+            }
+
+            .pricing {
+                width: 98%;
+                padding: 12px;
+            }
+
+            .cute-image {
+                width: 95%;
+            }
+        }
+    </style>
 </head>
 <body>
 
 
 <div class="container">
 <header>
-  <nav style="margin-bottom: 2%;">
+  <nav>
     <div>
-    <a href="main.html", style="color: aliceblue;">Главная</a>
-    <a href="contacts.html", style="color: aliceblue;">Контакты</a>
-    <a href="bron.html", style="color: aliceblue;">Цены</a>
-    <a href="feedback.php", style="color: aliceblue;">Отзывы</a>
+    <a href="main.html">Главная</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="bron.html">Цены</a>
+    <a href="feedback.php">Отзывы</a>
     </div>
   </nav>
-  <a style="font-size: 50px; color: aliceblue;">&#10039</a>
-  <a class="namemain", style="font-family: 'Henny Penny'; color: aliceblue; font-size: 60px;margin-top: 2%;">AliceCafe</a1>
-  <a style="font-size: 50px; color: aliceblue;">&#10039</a>
+  <a style="font-size: clamp(30px, 6vw, 60px); color: aliceblue;">&#10039</a>
+  <a class="namemain">AliceCafe</a>
+  <a style="font-size: clamp(30px, 6vw, 60px); color: aliceblue;">&#10039</a>
 </header>
     
-<div style= "font-family: 'Neucha'; width: 60%; margin-left: 20%;">
+<div class="rules">
     <h2>Правила поведения в нашем кафе</h2>
-    <ul style="font-size: 18px;">
+    <ul>
         <li>Принимаем взрослых и детей с 3-х лет. Малыши могут ненарочно навредить животным или пораниться.</li>
         <li>Запрещено приносить любые алкогольные напитки.</li>
         <li>По закону мы не имеем права подавать еду, хотя и называемся кафе. Вы можете принести с собой любую пищу.</li>
         <li>Не кричите, говорите тихо и спокойно.</li>
         <li>Брать на руки кроликов строго воспрещается. Также просим аккуратно обращаться с ними, не лезть к спящим зверькам и не беспокоить их.</li>
-        <li>Не оставляйте после себя беспорядок. Мусор и разгром обойдется вам штрафом в 5000 рублей. </li>
+        <li>Не оставляйте после себя беспорядок. Мусор и разгром обойдется вам штрафом в 5000 рублей.</li>
     </ul>
 </div>
-<hr style="color: rgb(111, 170, 176); width: 70%;">
-<div class="form">
+<hr>
+<div class="pricing">
     <h2>Прайс-лист</h2>
     <p>Первый час - 600 рублей</p>
     <p>Дальше - 9 рублей в минуту.</p>
@@ -52,8 +225,8 @@
     <p>В день рождения: скидка 20% за общий счёт имениннику и его друзьям</p>
     <p>Студентам: скидка 10%</p>
 </div>
-<hr style="color: rgb(111, 170, 176); width: 70%;">
-<img src="images/cute.png" style="width: 40%; height: 15%; justify-content: center; margin-left: 30% ; margin-bottom: 5%;">
+<hr>
+<img src="images/cute.png" alt="Cute image" class="cute-image">
 
 </div>
 

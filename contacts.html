@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Контакты</title>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/alicecafe/manifest.json">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,16 +181,14 @@
 </div>
 
 <script>
-  // Проверяем, поддерживает ли браузер Service Worker
   if ('serviceWorker' in navigator) {
-    // Регистрируем Service Worker после загрузки страницы
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/alicecafe/sw.js')
         .then(registration => {
           console.log('✅ Service Worker зарегистрирован:', registration);
         })
         .catch(error => {
-          console.log('❌ Ошибка регистрации Service Worker:', error);
+          console.error('❌ Ошибка регистрации:', error);
         });
     });
   }

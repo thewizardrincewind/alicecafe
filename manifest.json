@@ -1,12 +1,14 @@
 {
   "name": "AliceCafe",
   "short_name": "AliceCafe",
-  "start_url": "/",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "start_url": "/alicecafe/",
+  "scope": "/alicecafe/",
+  "display": "standalone",
+  "background_color": "#2c1810",
+  "theme_color": "#2c1810",
   "icons": [
     {
-      "src": "/icons/icon-32.png",
+      "src": "/alicecafe/icons/icon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     }

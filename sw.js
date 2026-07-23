@@ -1,34 +1,30 @@
 // sw.js
 
 // Название кеша (меняйте при обновлении)
-const CACHE_NAME = 'my-pwa-v1';
+const CACHE_NAME = 'alicecafe-v4';
 
-// Список файлов, которые нужно кешировать
 const FILES = [
-  '/',
-  '/main.html',
-  '/manifest.json',
-  '/style.css',
-  '/bron.html',
-  '/feedback.php',
-  'icon.png',
-  '/contacts.png',
-  '/images/bg.png',
-  '/images/bun2.jpg',
-  '/images/bun3.jpg',
-  '/images/bun4.jpg',
-  '/images/bun5.jpg',
-  '/images/bun6.jpg',
-  '/images/bun7.jpg',
-  '/images/bun9.jpg',
-  '/images/bun10.jpg',
-  '/images/bunny.jpg',
-  '/images/cute.jpg',
+  '/alicecafe/',
+  '/alicecafe/index.html',
+  '/alicecafe/main.html',
+  '/alicecafe/contacts.html',
+  '/alicecafe/bron.html',
+  '/alicecafe/feedback.php',
+  '/alicecafe/manifest.json',
+  '/alicecafe/style.css',
+  '/alicecafe/images/bunny.jpg',
+  '/alicecafe/images/bun2.jpg',
+  '/alicecafe/images/bun3.jpg',
+  '/alicecafe/images/bun4.jpg',
+  '/alicecafe/images/bun5.jpg',
+  '/alicecafe/images/bun6.jpg',
+  '/alicecafe/images/bun7.jpg',
+  '/alicecafe/images/bun9.jpg',
+  '/alicecafe/images/bun10.jpg',
+  '/alicecafe/images/cute.png'
 ];
 
-
-const CACHE_NAME = 'alicecafe-v3';
-const FILES = ['/', '/main.html', '/manifest.json'];
+const FILES = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(FILES)));

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/alicecafe/manifest.json">
     <title>Alice Cafe</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -301,16 +301,14 @@
 </div>
 
 <script>
-  // Проверяем, поддерживает ли браузер Service Worker
   if ('serviceWorker' in navigator) {
-    // Регистрируем Service Worker после загрузки страницы
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/alicecafe/sw.js')
         .then(registration => {
           console.log('✅ Service Worker зарегистрирован:', registration);
         })
         .catch(error => {
-          console.log('❌ Ошибка регистрации Service Worker:', error);
+          console.error('❌ Ошибка регистрации:', error);
         });
     });
   }

@@ -8,10 +8,10 @@ const FILES = [
   '/alicecafe/index.html',
   '/alicecafe/contacts.html',
   '/alicecafe/bron.html',
-  '/alicecafe/feedback.php',
   '/alicecafe/manifest.json',
   '/alicecafe/style.css',
   '/alicecafe/images/bunny.jpg',
+  '/alicecafe/images/bg.png',
   '/alicecafe/images/bun2.jpg',
   '/alicecafe/images/bun3.jpg',
   '/alicecafe/images/bun4.jpg',
@@ -22,8 +22,6 @@ const FILES = [
   '/alicecafe/images/bun10.jpg',
   '/alicecafe/images/cute.png'
 ];
-
-const FILES = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(FILES)));
